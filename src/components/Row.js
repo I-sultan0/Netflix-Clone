@@ -32,15 +32,14 @@ const Row = ({ title, fetchURL, isLargeRow }) => {
     if (trailerUrl) {
       setTrailerUrl("");
     } else {
-      movieTrailer(movie?.name || "")
+      movieTrailer(null, { tmdbId: movie.id })
         .then((url) => {
-          console.log(url);
+          console.log("url is " + url);
           const urlParams = new URLSearchParams(new URL(url).search);
+          console.log("urlParamsn" + urlParams);
           setTrailerUrl(urlParams.get("v"));
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((error) => console.log(error));
     }
   };
   console.table(movies);
