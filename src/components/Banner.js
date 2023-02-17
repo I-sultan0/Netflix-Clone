@@ -20,6 +20,11 @@ const Banner = () => {
     fetchData();
   }, []);
   console.log(movie);
+
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
+
   return (
     <header
       className={classes.banner}
@@ -30,8 +35,18 @@ const Banner = () => {
       }}
     >
       <div className={classes.banner_contents}>
-        <h1>{movie?.title || movie?.name || movie?.original_name}</h1>
+        <h1 className={classes.banner_title}>
+          {movie?.title || movie?.name || movie?.original_name}
+        </h1>
+        <div className={classes.banner_buttons}>
+          <button className={classes.banner_button}>Play</button>
+          <button className={classes.banner_button}>My List</button>
+        </div>
+        <h1 className={classes.banner_description}>
+          {truncate(movie?.overview, 150)}
+        </h1>
       </div>
+      <div className={classes.fade_bottom} />
     </header>
   );
 };
