@@ -74,15 +74,7 @@ self.addEventListener("message", (event) => {
 // Any other custom service worker logic can go here.
 // "./Assets/heroImg.webp ",
 
-const urlsToCache = [
-  "./Pages/Home/Home.js",
-  "App.js",
-  "./Pages/Home/Home.module.css",
-  "./Assets/logo_mobile.png",
-  "./Assets/logo.webp",
-  "./Assets/bgLogin.webp",
-  "./Assets/forget.webp",
-];
+const urlsToCache = ["App.js", "./assets/logo.png"];
 self.addEventListener("install", (event) => {
   event.waitUntil(async () => {
     const cache = await caches.open("pwa-assets");
